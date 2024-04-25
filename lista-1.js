@@ -196,3 +196,122 @@ const numero = parseInt(prompt("Digite um número: "))
 for (let i = 0; i < 10; i++){
   console.log(numero)
 }
+
+/*
+/ Exercício 11
+/ 11. Escreva um algoritmo para ler uma quantidade indeterminada de valores inteiros. Para
+/ cada valor fornecido escrever uma mensagem que indica se cada valor fornecido é PAR
+/ ou ÍMPAR. O algoritmo será encerrado imediatamente após a leitura de um valor NULO ou
+/ NEGATIVO.
+*/
+
+let valorLido;
+do{
+  valorLido = parseInt(prompt("Digite um inteiro: "));
+
+  // eu utilizei o isNaN porque o parseInt converte para um NaN caso a pessoa ponha um texto vazio
+  if(isNaN(valorLido) || valorLido < 0) {
+    break;
+  }
+
+  const parOuImpar = valorLido % 2 == 0 ? "PAR" : "ÍMPAR";
+
+  console.log(`O valor lido é: ${parOuImpar}`);
+}
+while(valorLido != null && valorLido >= 0);
+
+/*
+/ Exercício 12
+/ 12. Escreva um algoritmo que gere os números de 1000 a 1999 e escreva aqueles que,
+/ divididos por 11, dão resto igual a 5.
+*/
+
+for(let i = 1000; i <= 1999; i++){
+  if(i % 11 === 5) {
+    console.log(i);
+  }
+}
+
+/*
+/ Exercício 13
+/ 13. Escrever um algoritmo que leia 5 valores para uma variável N e, para cada um deles,
+/ calcule e mostre a tabuada de 1 até N. Mostre a tabuada na forma:
+*/
+
+for(let numero = 0; numero < 5; numero++) {
+  let N = parseInt(prompt("Digite o valor de N: "));
+  for(let fator = 1; fator <= N; fator ++) {
+    console.log(`${fator} x ${N} = ${fator * N}`)
+  }
+}
+
+
+/*
+/ Exercício 14
+/ 14.  Fazer um algoritmo para receber números decimais até que o usuário digite 0 e fazer
+/ a média aritmética desses números.
+*/
+
+
+let quantidade = 0;
+let soma = 0.0;
+let valorAtual = -1.0;
+while(valorAtual !== 0.0) {
+  valorAtual = parseFloat(prompt("Digite um valor: "));
+  if(valorAtual === 0) break;
+
+  soma += valorAtual;
+  quantidade++;
+
+}
+
+console.log(`A média aritmética dos valores é: ${soma / quantidade}`)
+
+
+/*
+/ Exercício 15
+/ 15.  Fazer um algoritmos para receber um número decimal e o peso de cada número até
+/ que o usuário digite o número 0. Fazer a média ponderada desses números e pesos
+/ respectivos.
+*/
+
+let valorLidoAtual = -1.0
+let somaPesos = 0.0
+let valoresOperadosComPeso = 0.0
+while(valorLidoAtual !== 0){
+  valorLidoAtual = parseFloat(prompt("Digite o valor atual: "));
+  if(valorLidoAtual === 0.0) break;
+  let pesoAtual = parseFloat(prompt("Digite o peso do valor atual: "));
+  
+  valoresOperadosComPeso += valorLidoAtual * pesoAtual;
+  somaPesos += pesoAtual;
+}
+
+console.log(`A média ponderada é: ${valoresOperadosComPeso / somaPesos}`)
+
+/*
+/ Exercício 16
+/ Escreva um algoritmo para imprimir os 50 primeiros número primos maior que 100.
+/ Obs.: Número primo é aquele divisível somente por 1 e ele mesmo
+*/
+
+let contador = 101
+let primos = 0;
+while(primos < 50) {
+    
+    
+    let divisores = 2;
+    let ehPrimo = true;
+    let metade = parseInt(contador / 2)
+    while(divisores <= metade){
+        if(contador % divisores === 0){
+            ehPrimo = false;
+        }
+        divisores++;
+    }
+    if(ehPrimo) {
+        primos++;
+        console.log(`O ${primos}º primo encontrado, é: ${contador}`)
+    }
+    contador++;
+}
